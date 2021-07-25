@@ -2,6 +2,7 @@ from turtle import Screen
 from player import Player
 from cars import Car
 from scoreboard import Scoreboard
+from roaddivider import RoadDivider
 import time
 
 # Screen object definition
@@ -10,6 +11,9 @@ screen.bgcolor("#f1c40f")
 screen.title("Turtle Crossing Game")
 screen.setup(width=600, height=600)
 screen.tracer(0)
+
+# Road Divider object definition
+road_divider = RoadDivider()
 
 # Player object definition
 player = Player()
