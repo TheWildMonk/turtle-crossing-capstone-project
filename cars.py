@@ -36,10 +36,14 @@ class Car:
     def move_cars_left_lane(self):
         for car in self.left_lane_cars:
             car.backward(self.car_speed)
+            if car.xcor() < -340:
+                self.left_lane_cars.remove(car)
 
     def move_cars_right_lane(self):
         for car in self.right_lane_cars:
             car.forward(self.car_speed)
+            if car.xcor() > 340:
+                self.right_lane_cars.remove(car)
 
     def level_up(self):
         self.car_speed += 2
