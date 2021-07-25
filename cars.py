@@ -7,23 +7,39 @@ CAR_SPEED = 5
 
 class Car:
     def __init__(self):
-        self.cars = []
+        self.left_lane_cars = []
+        self.right_lane_cars = []
         self.car_speed = CAR_SPEED
 
-    def generate_car(self):
-        random_interval = random.randint(1, 5)
+    def generate_left_lane_car(self):
+        random_interval = random.randint(1, 10)
         if random_interval == 1:
             new_car = Turtle("square")
             new_car.color(random.choice(COLORS))
             new_car.shapesize(stretch_wid=1, stretch_len=2)
             new_car.penup()
-            random_y = random.randint(-250, 250)
+            random_y = random.randint(-250, 0)
             new_car.goto(300, random_y)
-            self.cars.append(new_car)
+            self.left_lane_cars.append(new_car)
 
-    def move_cars(self):
-        for car in self.cars:
+    def generate_right_lane_car(self):
+        random_interval = random.randint(1, 10)
+        if random_interval == 1:
+            new_car = Turtle("square")
+            new_car.color(random.choice(COLORS))
+            new_car.shapesize(stretch_wid=1, stretch_len=2)
+            new_car.penup()
+            random_y = random.randint(80, 250)
+            new_car.goto(-300, random_y)
+            self.right_lane_cars.append(new_car)
+
+    def move_cars_left_lane(self):
+        for car in self.left_lane_cars:
             car.backward(self.car_speed)
+
+    def move_cars_right_lane(self):
+        for car in self.right_lane_cars:
+            car.forward(self.car_speed)
 
     def level_up(self):
         self.car_speed += 2

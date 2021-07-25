@@ -21,6 +21,9 @@ player = Player()
 # Turtle control
 screen.listen()
 screen.onkey(player.move_forward, "Up")
+screen.onkey(player.move_backward, "Down")
+screen.onkey(player.move_left, "Left")
+screen.onkey(player.move_right, "Right")
 
 # Car object definition
 car = Car()
@@ -33,10 +36,16 @@ end_game = False
 while not end_game:
     time.sleep(0.1)
     screen.update()
-    car.generate_car()
-    car.move_cars()
+    car.generate_left_lane_car()
+    car.move_cars_left_lane()
+    car.generate_right_lane_car()
+    car.move_cars_right_lane()
     # Detect collision with the car
-    for each_car in car.cars:
+    for each_car in car.left_lane_cars:
+        if each_car.distance(player) < 20:
+            score.game_over()
+            end_game = True
+    for each_car in car.right_lane_cars:
         if each_car.distance(player) < 20:
             score.game_over()
             end_game = True

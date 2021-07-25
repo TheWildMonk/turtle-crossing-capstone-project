@@ -17,6 +17,17 @@ class Player(Turtle):
     def move_forward(self):
         self.forward(10)
 
+    def move_backward(self):
+        self.backward(10)
+
+    def move_left(self):
+        turtle_x_position = self.xcor()
+        self.setx(turtle_x_position-10)
+
+    def move_right(self):
+        turtle_x_position = self.xcor()
+        self.setx(turtle_x_position+10)
+
     def reset_position(self):
         self.goto(STARTING_POSITION)
 
