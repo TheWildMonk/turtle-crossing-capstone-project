@@ -24,6 +24,8 @@ class Car:
     def move_cars(self):
         for car in self.cars:
             car.backward(self.car_speed)
+            if car.xcor() < -340:
+                self.cars.remove(car)
 
     def level_up(self):
         self.car_speed += 2

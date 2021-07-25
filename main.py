@@ -31,6 +31,7 @@ while not end_game:
     screen.update()
     car.generate_car()
     car.move_cars()
+    print(car.cars)
     # Detect collision with the car
     for each_car in car.cars:
         if each_car.distance(player) < 20:
